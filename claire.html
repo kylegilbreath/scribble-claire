@@ -1,0 +1,111 @@
+<!doctype HTML>
+<html>
+  <head>
+    <title>Scribble Claire</title>
+    <script language="javascript" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.3/p5.min.js"></script>
+    <script language="javascript" type="text/javascript" src="https://cdn.rawgit.com/generative-light/p5.scribble.js/master/p5.scribble.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.min.js"> </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+      function setup() {
+        var canvas = createCanvas( windowWidth*0.98, windowHeight*0.97 );
+        background( 255 );
+        stroke( 0 );
+        strokeWeight( 5 );
+
+        // center of the canvas
+        var y0 = windowHeight / 2;
+        var x0 = windowWidth / 2;
+
+        // stroke weight
+        var main = 5;
+        var shadow = 15;
+
+        // color variables
+        var red = 71;
+        var green = 57;
+        var blue = 130;
+        var alpha = 30;
+
+        // create an instance of scribble and set a few parameters
+        var scribble       = new Scribble();
+        scribble.bowing    = 20;
+        scribble.roughness = 1.5;
+
+        //set the color of the main drawing
+        stroke( red, green, blue);
+
+        // face
+        strokeWeight( main );
+        scribble.scribbleCurve( (x0 + 125), (y0 - 30), (x0 - 120), (y0 - 110), (x0 + 100), (y0 + 140), (x0 - 130), (y0 + 160) );
+
+        // ear
+        scribble.scribbleCurve( (x0 + 140), (y0 - 90), (x0 + 123), (y0 - 20), (x0 + 165), (y0 - 160), (x0 + 180), (y0 - 10) );
+        scribble.scribbleCurve( (x0 + 130), (y0 - 70), (x0 + 135), (y0 - 50), (x0 + 140), (y0 - 70), (x0 + 130), (y0 - 40) );
+
+        // eyes
+        strokeWeight( main );
+        scribble.scribbleCurve( (x0 - 52), (y0 - 88), (x0 - 95), (y0 - 82), (x0 - 55), (y0 - 80), (x0 - 80), (y0 - 110) );
+        scribble.scribbleEllipse( (x0 - 75), (y0 - 90), 4, 8 );
+        scribble.scribbleCurve( (x0 + 10), (y0 - 95), (x0 + 65), (y0 - 105), (x0 + 12), (y0 - 100), (x0 + 45), (y0 - 130) );
+        scribble.scribbleEllipse( (x0 + 40), (y0 - 110), 4, 10 );
+        scribble.scribbleCurve( (x0 - 52), (y0 - 118), (x0 - 105), (y0 - 115), (x0 - 55), (y0 - 120), (x0 - 80), (y0 - 130) );
+        scribble.scribbleCurve( (x0 + 2), (y0 - 125), (x0 + 75), (y0 - 135), (x0 + 2), (y0 - 130), (x0 + 55), (y0 - 140) );
+
+        // nose
+        strokeWeight( main );
+        scribble.scribbleCurve( (x0 - 40), (y0 - 25), (x0 + 3), (y0 - 30), (x0 - 15), (y0 - 15), (x0 - 3), (y0 - 45) );
+
+        // mouth
+        strokeWeight( main );
+        // scribble.scribbleCurve( (x0 - 60), (y0 + 13), (x0 + 45), (y0 + 0), (x0 - 70), (y0 + 15), (x0 + 30), (y0 + 0) );
+        // scribble.scribbleCurve( (x0 - 60), (y0 + 13), (x0 + 45), (y0 + 0), (x0 - 32), (y0 + 48), (x0 + 20), (y0 + 30) );
+        scribble.scribbleCurve( (x0 - 60), (y0 + 13), (x0 + 45), (y0 + 0), (x0 - 60), (y0 + 5), (x0 + 40), (y0 + 10) );
+        scribble.scribbleCurve( (x0 - 60), (y0 + 13), (x0 + 45), (y0 + 0), (x0 - 32), (y0 + 48), (x0 + 20), (y0 + 30) );
+
+        // neck
+        strokeWeight( main );
+        scribble.scribbleCurve( (x0 - 50), (y0 + 85), (x0 - 60), (y0 + 130), (x0 - 40), (y0 + 85), (x0 - 60), (y0 + 130) );
+        scribble.scribbleCurve( (x0 + 100), (y0 + 33), (x0 + 130), (y0 + 180), (x0 + 100), (y0 + 63), (x0 + 120), (y0 + 180) );
+
+        // hair
+        strokeWeight( main );
+        scribble.scribbleCurve( (x0 + 5), (y0 - 280), (x0 + 170), (y0 - 80), (x0 + 5), (y0 - 190), (x0 + 140), (y0 - 80) );
+        scribble.scribbleCurve( (x0 + 3), (y0 - 260), (x0 + 110), (y0 - 100), (x0), (y0 - 170), (x0 + 110), (y0 - 70) );
+        scribble.scribbleCurve( (x0 + 4), (y0 - 280), (x0 + 150), (y0 - 110), (x0 + 150), (y0 - 280), (x0 + 120), (y0 - 170) );
+        scribble.scribbleCurve( (x0 + 10), (y0 - 260), (x0 + 130), (y0 - 110), (x0 + 10), (y0 - 200), (x0 + 120), (y0 - 170) );
+        scribble.scribbleCurve( (x0 + 3), (y0 - 280), (x0 - 125), (y0 - 90), (x0 - 110), (y0 - 280), (x0 - 180), (y0 - 120) );
+        scribble.scribbleCurve( (x0 - 12), (y0 - 275), (x0 + 110), (y0 - 100), (x0 - 15), (y0 - 140), (x0 + 110), (y0 - 70) );
+        scribble.scribbleCurve( (x0 - 8), (y0 - 275), (x0 - 105), (y0 - 110), (x0 - 90), (y0 - 270), (x0 - 140), (y0 - 120) );
+        scribble.scribbleCurve( (x0 - 8), (y0 - 275), (x0 - 20), (y0 - 110), (x0 - 90), (y0 - 240), (x0 - 70), (y0 - 120) );
+        scribble.scribbleCurve( (x0 - 6), (y0 - 275), (x0 - 20), (y0 - 140), (x0 - 70), (y0 - 200), (x0 - 50), (y0 - 140) );
+        scribble.scribbleCurve( (x0 + 120), (y0 - 2), (x0 + 170), (y0 + 100), (x0 + 120), (y0 + 70), (x0 + 170), (y0 + 60) );
+
+        // shirt
+        strokeWeight( main );
+        scribble.scribbleCurve( (x0 + 130), (y0 + 150), (x0 + 10), (y0 + 300), (x0 + 150), (y0 + 200), (x0 + 15), (y0 + 220) );
+        scribble.scribbleCurve( (x0 + 110), (y0 + 70), (x0 + 200), (y0 + 280), (x0 + 250), (y0 + 80), (x0 + 200), (y0 + 280) );
+        scribble.scribbleCurve( (x0 + 10), (y0 + 300), (x0 + 200), (y0 + 280), (x0 + 50), (y0 + 200), (x0 + 200), (y0 + 280) );
+        scribble.scribbleCurve( (x0 + 210), (y0 + 160), (x0 + 320), (y0 + 250), (x0 + 210), (y0 + 160), (x0 + 320), (y0 + 210) );
+        scribble.scribbleCurve( (x0 - 53), (y0 + 100), (x0 - 80), (y0 + 110), (x0 - 53), (y0 + 100), (x0 - 80), (y0 + 110) );
+        scribble.scribbleCurve( (x0 - 185), (y0 + 130), (x0 - 300), (y0 + 200), (x0 - 180), (y0 + 130), (x0 - 280), (y0 + 150) );
+        scribble.scribbleCurve( (x0 - 135), (y0 + 80), (x0 + 20), (y0 + 315), (x0 - 50), (y0 + 80), (x0 - 10), (y0 + 310) );
+        scribble.scribbleCurve( (x0 - 140), (y0 + 90), (x0 - 30), (y0 + 340), (x0 - 120), (y0 + 85), (x0 - 80), (y0 + 300) );
+        scribble.scribbleCurve( (x0 - 180), (y0 + 130), (x0 - 30), (y0 + 380), (x0 - 180), (y0 + 130), (x0 - 50), (y0 + 380) );
+        scribble.scribbleCurve( (x0 - 140), (y0 + 90), (x0 - 180), (y0 + 120), (x0 - 140), (y0 + 90), (x0 - 180), (y0 + 110) );
+        scribble.scribbleCurve( (x0 - 30), (y0 + 200), (x0 + 80), (y0 + 210), (x0 - 30), (y0 + 220), (x0 + 80), (y0 + 220) );
+
+        // shadow
+        strokeWeight( shadow );
+        stroke( red, green, blue, alpha );
+        scribble.scribbleCurve( (x0 + 90), (y0 + 60), (x0 + 110), (y0 + 180), (x0 + 90), (y0 + 60), (x0 + 110), (y0 + 180) );
+        scribble.scribbleCurve( (x0 + 90), (y0 + 60), (x0 + 40), (y0 + 100), (x0 + 90), (y0 + 60), (x0 + 60), (y0 + 100) );
+        scribble.scribbleCurve( (x0 + 115), (y0 - 85), (x0 + 108), (y0 - 10), (x0 + 118), (y0 - 65), (x0 + 113), (y0 - 10) );
+
+
+      }
+
+      function draw() {}
+    </script>
+  </head>
+</html>
